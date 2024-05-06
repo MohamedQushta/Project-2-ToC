@@ -51,15 +51,16 @@ class Driver:
             currStateNextTransition = self.currState.alphabetTransitions[letterToBeChecked]
             updatedChar = self.currState.alphabetTransitions[letterToBeChecked].writtenChar
             currentTapePosition = self.turingTape.currPosition
-
+            nextStateLetter = self.currState.alphabetTransitions[letterToBeChecked].nextState
+            
             if currStateNextTransition.tapeDirection == 'R':
                 self.turingTape.currString[currentTapePosition] = updatedChar
                 self.turingTape.incrementPosition()
-                self.currState = self.statesDict[self.currState.alphabetTransitions[letterToBeChecked].nextState]
+                self.currState = self.statesDict[nextStateLetter]
             elif currStateNextTransition.tapeDirection == 'L':
                 self.turingTape.currString[currentTapePosition] = updatedChar
                 self.turingTape.decrementPosition()
-                self.currState = self.statesDict[self.currState.alphabetTransitions[letterToBeChecked].nextState]
+                self.currState = self.statesDict[nextStateLetter]
         if self.currState.isAccepting == True:
             print("this string is accepted")
         else:
