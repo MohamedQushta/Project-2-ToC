@@ -47,10 +47,10 @@ class Driver:
         self.currState = initialState 
     def processString(self):
         while(not self.turingTape.isDone):
-            letterToBeChecked = self.turingTape.currString[self.turingTape.currPosition]
+            currentTapePosition = self.turingTape.currPosition
+            letterToBeChecked = self.turingTape.currString[currentTapePosition]
             currStateNextTransition = self.currState.alphabetTransitions[letterToBeChecked]
             updatedChar = self.currState.alphabetTransitions[letterToBeChecked].writtenChar
-            currentTapePosition = self.turingTape.currPosition
             nextStateLetter = self.currState.alphabetTransitions[letterToBeChecked].nextState
             
             if currStateNextTransition.tapeDirection == 'R':
