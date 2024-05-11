@@ -1,5 +1,5 @@
 {
-    "qA": {"a": {"write": "A", "move": "R", "next_state": "qB"},
+    "start": {"a": {"write": "A", "move": "R", "next_state": "qB"},
            "B": {"move": "R", "next_state": "scan"}},
     "qB": {"a": {"move": "R", "next_state": "qB"},
            "b": {"write": "B", "move": "R", "next_state": "qC"},
@@ -11,7 +11,8 @@
              "B": {"move": "L", "next_state": "back"},
              "b": {"move": "L", "next_state": "back"},
              "C": {"move": "L", "next_state": "back"},
-             "A": {"move": "R", "next_state": "qA"}},
+             "A": {"move": "R", "next_state": "start"}},
     "scan": {"B": {"move": "R", "next_state": "scan"},
-             "C": {"move": "R", "next_state": "accept"}}
+             "C": {"move": "R", "next_state": "scan"},
+             " ": {"move": "R", "next_state": "accept"}}
 }
