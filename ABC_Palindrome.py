@@ -1,6 +1,7 @@
-import tkinter as tk
 from tkinter import ttk
+import tkinter as tk
 import json
+
 class GUI:
     def __init__(self, master):
         self.master = master
@@ -115,6 +116,7 @@ class GUI:
     def stop_turing_machine(self):
         if hasattr(self, 'step_id'):
             self.master.after_cancel(self.step_id)
+            
 class TuringMachine:
     def step(self):
         current_symbol = self.tape[self.tape_index]
@@ -148,8 +150,6 @@ class palindrome_machine(TuringMachine):
             data = json.load(file)
         self.transition_table = data
 
-    
-
 class ABC_TuringMachine(TuringMachine):
     def __init__(self):
         with open('ABC.json', 'r') as file:
@@ -161,6 +161,7 @@ class FlexibleTM(TuringMachine):
         with open('other.json', 'r') as file:
             data = json.load(file)
         self.transition_table = data
+        
 def main():
     root = tk.Tk()
     app = GUI(root)
